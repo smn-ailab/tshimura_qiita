@@ -27,9 +27,13 @@ CONFIG_FILE = "config.py"
 # 設定ファイルに書き込む内容
 CONFIG_CONTENT = """
 # Myclock configuration.
+# 表示する各タイムゾーン.
 c.MyClock.time_zones = [ "Asia/Tokyo", "Europe/London", "America/New_York"]
+# 日時のフォーマット.
 c.MyClock.time_format = "HH:mm:ss"
+# カウントダウンを行う日時.
 c.MyClock.the_day_datetime = "2020-07-24 20:00:00+09:00"
+# カウントダウンの日時の名称.
 c.MyClock.the_day_title = "Tokyo Olympic"
 """
 
