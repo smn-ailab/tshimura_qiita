@@ -14,6 +14,7 @@
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
+from time import sleep
 
 import arrow
 from traitlets import Int, List, Unicode
@@ -123,7 +124,17 @@ def command() -> None:
 
     """
     mc = MyClock()
-    mc.show()
+    # mc.show()
+
+    # ループ
+    while(True):
+        mc.show()
+        sleep(1)
+        sys.stdout.write("\033[F")  # back to previous line
+        sys.stdout.write("\033[K")  # clear line
+        for _ in mc.time_zones:
+            sys.stdout.write("\033[F")  # back to previous line
+            sys.stdout.write("\033[K")  # clear line
 
 
 if __name__ == "__main__":
