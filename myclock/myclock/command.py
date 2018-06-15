@@ -49,7 +49,7 @@ class MyClock(Configurable):
     the_day_datetime = Unicode("2020-07-24 20:00:00+09:00").tag(config=True)
     the_day_title = Unicode("Tokyo Olympic").tag(config=True)
 
-    def __init__(self):
+    def __init__(self) -> None:
         """コンストラクタ.
 
         - 外部設定ファイルが存在する場合は読込み、このクラスのプロパティを更新します.
@@ -62,7 +62,7 @@ class MyClock(Configurable):
             # 自身のパラメータを更新する.
             self.update_config(c)
 
-    def show(self):
+    def show(self) -> None:
         """ローカル時刻とカウントダウンを表示します."""
         # 各ローカル時刻を表示
         utc = arrow.utcnow()
@@ -88,7 +88,7 @@ class CustomArrow(arrow.Arrow):
         return dt - self
 
 
-def create_config():
+def create_config() -> None:
     """ホームディレクトリに .myclock/config.py を生成する."""
     d = Path.home() / ".myclock"
     p = Path.home() / ".myclock" / "config.py"
@@ -104,7 +104,7 @@ def create_config():
             print("cannot write config file.")
 
 
-def command():
+def command() -> None:
     """MyClockによる時刻を表示する.
 
     - ターミナルから実行される myclock コマンドのエントリーポイント.
