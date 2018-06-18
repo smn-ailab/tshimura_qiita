@@ -11,6 +11,7 @@
 - 外部設定ファイルのよる更新に Traitlets を使用しています.
 - タイムゾーンの変換に Arrow を使用しています.
 """
+import argparse
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -123,18 +124,26 @@ def command() -> None:
         Tokyo Olympic	770 days, 3:45:42
 
     """
+    parser = argparse.ArgumentParser(
+        prog="myclock", description="設定されたタイムゾーンの時刻を表示します.")
+    parser.add_argument("-l", "--loop", help="毎秒表示し続けます.", action="store_true")
+    args = vars(parser.parse_args())
     mc = MyClock()
-    # mc.show()
 
-    # ループ
-    while(True):
+    if not args["loop"]:
+        # 時刻を表示します.
         mc.show()
-        sleep(1)
-        sys.stdout.write("\033[F")  # back to previous line
-        sys.stdout.write("\033[K")  # clear line
-        for _ in mc.time_zones:
+
+    else:
+        # 毎秒表示を続けます.
+        while(True):
+            mc.show()
+            sleep(1)
             sys.stdout.write("\033[F")  # back to previous line
             sys.stdout.write("\033[K")  # clear line
+            for _ in mc.time_zones:
+                sys.stdout.write("\033[F")  # back to previous line
+                sys.stdout.write("\033[K")  # clear line
 
 
 if __name__ == "__main__":
