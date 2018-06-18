@@ -49,7 +49,8 @@ class MyClock(Configurable):
     モジュールをアンインストールしても設定ファイルは残ります.
     """
 
-    # 初期値
+    # 設定値の初期値.
+    # 外部設定ファイル `~/.myclock/config.py` からも更新できます.
     time_zones = List(["Asia/Tokyo"]).tag(config=True)
     time_format = Unicode("YYYY-MM-DD HH:mm:ss ZZ").tag(config=True)
     the_day_datetime = Unicode("2020-07-24 20:00:00+09:00").tag(config=True)
@@ -114,6 +115,10 @@ def command() -> None:
     """MyClockによる時刻を表示する.
 
     - ターミナルから実行される myclock コマンドのエントリーポイント.
+
+    :Arguments:
+
+        - -l, --loop: このオプションをつけた場合は表示を毎秒更新し続けます.
 
     :Example:
 
