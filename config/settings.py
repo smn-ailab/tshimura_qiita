@@ -1,4 +1,4 @@
-"""Qiita記事: 「設定ファイルを使用した Python スクリプトの初期化」 のサンプルプログラム."""
+"""Qiita記事: 「パッケージの Config をミスなく反映させる方法」 のサンプルプログラム."""
 
 from pathlib import Path
 
@@ -7,17 +7,26 @@ from traitlets import Int, List, Unicode
 from traitlets.config.configurable import Configurable
 from traitlets.config.loader import PyFileConfigLoader
 
+# 外部設定ファイル.
+CONFIG_FILE = "config.py"
 
-class LocalTime(Configurable):
-    """コンソールに各タイムゾーンの現在時刻を表示するクラス."""
 
-    # 外部設定ファイル `config.py` から更新できるパラメータ.
-    time_zones = List(["Asia/Tokyo"]).tag(config=True)
-    time_format = Unicode("YYYY-MM-DD HH:mm:ss ZZ").tag(config=True)
+class Settings(Configurable):
+    """設定値を保持するクラス."""
+
+    # 保持しているパラメータ.
+    # これらのパラメータは外部設定ファイルから更新できる.
+    cpu = Unicode("CORE i5").tag(config=True)
+    memory = Int(8).tag(config=True)
+    usb_types = List(["USB 2.0", "USB 3.0"]).tag(config=True)
 
     def __init__(self) -> None:
         """クラスの初期化."""
-        p = Path("config.py")
+        pass
+
+    def load_config(self) -> None:
+        """設定ファイルを読み込みパラメータを更新する."""
+        p = Path(CONFIG_FILE)
         if p.exists():
             # 設定ファイルが存在すれば読み込む.
             loader = PyFileConfigLoader(str(p))
@@ -25,19 +34,15 @@ class LocalTime(Configurable):
             # 自身のパラメータを更新する.
             self.update_config(c)
 
-    def show(self) -> None:
-        """各タイムゾーンの現在時刻を表示する."""
-        utc = arrow.utcnow()
-        for zone in self.time_zones:
-            s = utc.to(zone).format(self.time_format)
-            print(f"{zone.split('/')[1]}\t{s}".expandtabs(16))
-
-
-def exec() -> None:
-    """日付時刻を表示する."""
-    lt = LocalTime()
-    lt.show()
+    def dump(self) -> None:
+        """パラメータを辞書にして返す."""
+        return {"cpu": self.cpu,
+                "memory": self.memory,
+                "usb": self.usb_types}
 
 
 if __name__ == "__main__":
-    exec()
+    settings = Settings()
+    print(settings.dump())
+    settings.load_config()
+    print(settings.dump())

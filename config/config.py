@@ -1,5 +1,7 @@
-# LocalTime configuration.
-# 表示する各タイムゾーン.
-c.LocalTime.time_zones = ["Asia/Tokyo", "Europe/London", "America/New_York"]
-# 日時のフォーマット.
-c.LocalTime.time_format = "HH:mm:ss"
+# Settings class configuration.
+# CPU
+c.Settings.cpu = "CORE i7"
+# Memory (GB)
+c.Settings.memory = 16
+# USB types
+c.Settings.usb_types = ["USB 3.0", "USB Type-C"]
