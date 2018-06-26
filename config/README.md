@@ -8,5 +8,12 @@
 ## 設定ファイル
 `config.py` に設定が書かれています.
 
-##　実行
+## 実行
 `command.py` を実行することにより、設定ファイルの内容を読込み、実行します.
+
+```Bash
+$ python command.py
+Tokyo           15:19:18
+London          07:19:18
+New_York        02:19:18
+```
