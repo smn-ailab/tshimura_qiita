@@ -1,4 +1,4 @@
-"""Qiita記事 「pipでインストールできる自作Pythonコマンドを作る。」 のサンプルプログラム."""
+"""Qiita記事 「pip install で shell で実行可能なコマンドをインストールする」 のサンプルプログラム."""
 
 import argparse
 
