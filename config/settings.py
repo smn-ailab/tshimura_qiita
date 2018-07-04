@@ -2,7 +2,6 @@
 
 from pathlib import Path
 
-import arrow
 from traitlets import Int, List, Unicode
 from traitlets.config import Application
 from traitlets.config.configurable import Configurable
