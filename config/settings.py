@@ -4,6 +4,7 @@ from pathlib import Path
 
 import arrow
 from traitlets import Int, List, Unicode
+from traitlets.config import Application
 from traitlets.config.configurable import Configurable
 from traitlets.config.loader import PyFileConfigLoader
 
@@ -41,8 +42,25 @@ class Settings(Configurable):
                 "usb": self.usb_types}
 
 
+# 追記分.
+class Settings2(Application):
+    """設定ファイルを自動生成するためのサンプルクラス.
+
+    Traitlets の Application クラスを継承します.
+    自動生成は generate_config_file() を実行してください.
+    """
+    cpu = Unicode("CORE i3").tag(config=True)
+    memory = Int(2).tag(config=True)
+    usb_types = List(["USB 1.1", "USB 2.0"]).tag(config=True)
+
+
 if __name__ == "__main__":
     settings = Settings()
     print(settings.dump())
     settings.load_config()
     print(settings.dump())
+
+    # 設定ファイルの自動生成を行う場合のコードはこちら.
+    # s2 = Settings2()
+    # ret = s2.generate_config_file()
+    # Path("auto_generated_config.py").write_text(ret)
