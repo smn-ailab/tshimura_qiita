@@ -22,3 +22,6 @@ python settings.py
 {'cpu': 'CORE i5', 'memory': 8, 'usb': ['USB 2.0', 'USB 3.0']}
 {'cpu': 'CORE i7', 'memory': 16, 'usb': ['USB 3.0', 'USB Type-C']}
 ```
+
+## 補足
+設定ファイルの自動生成するサンプルコードが `settings.py` 最下部にコメントアウトされた状態で含まれています。
