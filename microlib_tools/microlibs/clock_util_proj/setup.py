@@ -11,6 +11,6 @@ setup(
     namespace_packages=['mtools'],
     packages=[microlib_name],
     install_requires=[
-        # add more packages if needed
+        "arrow",
     ],
 )
