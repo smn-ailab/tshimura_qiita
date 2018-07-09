@@ -7,6 +7,8 @@ from setuptools.command.develop import develop
 from setuptools.command.install import install
 
 PACKAGE_NAME = 'mtools'
+
+# インストールする microlibs
 SOURCES = {
     'microlibs.clock_util': 'microlibs/clock_util_proj',
     'microlibs.message_util': 'microlibs/message_util_proj',
@@ -20,14 +22,14 @@ def install_microlibs(sources, develop=False):
     wd = os.getcwd()
     print(f"wd: {wd}")
     print(f"sources: {sources}")
-    # for k, v in iteritems(sources):
+
+    # microlibs をインストールする.
     for k, v in sources.items():
         print(f"k: {k}    v:{v}")
         try:
             # 作業ディレクトリを各 microlibs のルートに移動.
             os.chdir(Path(wd) / v)
 
-            print(f"cwd: {os.getcwd()}")
             if develop:
                 pip.main(['install', '-e', '.'])
             else:
@@ -66,8 +68,6 @@ setup(
         'Private :: Do Not Upload to pypi server',
     ],
     install_requires=[
-        'future',
-        'six',
     ],
     cmdclass={
         'install': InstallCmd,
