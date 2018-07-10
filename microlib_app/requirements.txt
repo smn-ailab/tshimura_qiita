@@ -1,0 +1,2 @@
+arrow
+git+ssh://git@github.com/smn-ailab/ailab_base.git#egg=ailab_tools_base
