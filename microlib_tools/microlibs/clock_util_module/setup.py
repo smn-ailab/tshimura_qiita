@@ -11,6 +11,7 @@ setup(
     namespace_packages=['mtools'],
     packages=[microlib_name],
     install_requires=[
+        # PyPi からインストールするパッケージ.
         "arrow",
     ],
 )

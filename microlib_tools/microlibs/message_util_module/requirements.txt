@@ -1,2 +1,4 @@
-../clock_uitl_module/
+--index-url https://pypi.python.org/simple
+
+../clock_util_module/
 -e .
