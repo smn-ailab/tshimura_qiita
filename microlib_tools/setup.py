@@ -10,8 +10,8 @@ PACKAGE_NAME = 'mtools'
 
 # インストールする microlibs
 SOURCES = {
-    'microlibs.clock_util': 'microlibs/clock_util_proj',
-    'microlibs.message_util': 'microlibs/message_util_proj',
+    'microlibs.clock_util': 'microlibs/clock_util_module',
+    'microlibs.message_util': 'microlibs/message_util_module',
 }
 
 

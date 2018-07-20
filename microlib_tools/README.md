@@ -37,7 +37,13 @@
       - 内部で clock_util モジュールの get_local_time を使用しています.
 
 ## アンインストール
-- `pip uninstall mtools` を実行することによりアンインストールできます.
+- ルートのパッケージと各 microlib をそれぞれアンインストールしてください。
+
+```Bash
+$ pip uninstall mtools
+$ pip uninstall mtools-clock-util
+$ pip uninstall mtools-message-util
+```
 
 ## 参考
 - [Python microlibs](https://blog.shazam.com/python-microlibs-5be9461ad979)
