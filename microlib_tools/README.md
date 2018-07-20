@@ -22,7 +22,12 @@
 
 
 ## インストール
+
+### 全てを一括してインストールする場合
 - このディレクトリで `pip install .` を実行してください。
+
+### 各 microlib を個別にインストールする場合
+- 各 microlib のトップディレクトリで `pip install -r requirements.txt` を実行してください。
 
 
 ## 実行できるモジュール
@@ -35,6 +40,7 @@
     - get_greeting_message
       - 各タイムゾーンでの挨拶を返します.
       - 内部で clock_util モジュールの get_local_time を使用しています.
+
 
 ## アンインストール
 - ルートのパッケージと各 microlib をそれぞれアンインストールしてください。
